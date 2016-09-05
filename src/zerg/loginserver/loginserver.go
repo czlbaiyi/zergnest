@@ -5,9 +5,10 @@ import (
 
 	"zerg/log"
 
-	PB_Login "zerg/protobuf/PB_Login"
+	PB_Login "zerg/protobuf/PB_Login/go"
 
 	"zerg/conf"
+
 	"github.com/golang/protobuf/proto"
 )
 
