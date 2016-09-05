@@ -1,0 +1,5 @@
+package mailserver
+
+func StartServer() {
+
+}

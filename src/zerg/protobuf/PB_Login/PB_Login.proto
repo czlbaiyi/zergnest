@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package PB_login;
+
+/************************************************************************
+Modul
+************************************************************************/
+message PB_ServerInfo
+{
+	enum PB_ServerStatus
+	{
+		good = 0;//畅通
+		crowd = 1;//拥挤
+		busy = 2;//爆满
+		maintain = 3;//维护中
+	}
+	int32 serverId = 1;//服务器唯一标示
+	string serverName = 2;//服务器名称
+	string serverUrl = 3;//地址
+	string tcpIp = 4;//IP地址
+	string tcpPort = 5;//端口
+	PB_ServerStatus status = 6;//状态
+}
+
+message PB_AccountLoginHistory
+{
+    enum PB_LoginRoleTye
+	{
+		man = 0;//男
+		women = 1;//女
+	}
+	int32 serverId = 1;//服务器唯一标示
+	PB_LoginRoleTye roleType = 2;//角色类型
+	string roleName = 3;//
+	int32 roleLevel = 4;//
+	int32 awakeLevel = 5;//
+	int32 vipLevel = 6;//
+	int64 updateTime = 7;//
+}
+
+/************************************************************************
+Message
+************************************************************************/
+
+//HTTP头数据：opcode:消息号  sessionId:会话ID
+//玩家登陆 CS11001（第三方登陆或本地测试登陆都使用该协议）
+message CS11001
+{
+    int32 PB_PackType = 11001;
+    int32 PB_PackRetType = 11002;
+
+	enum PB_PlatformType
+	{
+		local_login = 0;//本地测试账号密码登陆方式
+		platform_login = 1;//畅游测试账号密码登陆方式
+	}
+
+	PB_PlatformType platformType = 1;//平台类型（登陆方式）
+
+	//账号信息
+	string platformAccountId = 2;//平台账号ID(或本地账号)
+	string authId = 3;//平台验证串(或本地密码)
+
+	//客户端硬件信息
+	string clientType = 4;//客户端类型：“IOS”，“ANDROID”或者“OTHER”
+	string uuid = 5;//客户端唯一标示(IOS为UUID，ANDROID为IMEI，PC为MAC地址)
+
+	int32 channelId = 6;//渠道ID(渠道编号，如：3006,3009)
+	int64 adChannelId = 7;//推广渠道ID(运营提供的推广渠道标示，服务器日志埋点用，如：1011262002）
+}
+
+//登陆返回 SC11002
+message SC11002 
+{
+    int32 PB_PackRetType = 11002;
+
+	int64 accountId = 1;//本地应用的账号id
+	string sessionId = 2;//本地应用生成的账号会话id
+	string platformAccountId = 3;//平台生成的账号ID（畅游账号）
+	string platformAccountName = 4;//oid
+	string accessToken = 5;
+	repeated PB_AccountLoginHistory loginHistories = 6;
+    repeated PB_ServerInfo serverInfos = 7;//服务器列表
+}

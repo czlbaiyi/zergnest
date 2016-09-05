@@ -1,0 +1,5 @@
+package statusserver
+
+func StartServer() {
+
+}
