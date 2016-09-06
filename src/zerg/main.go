@@ -88,7 +88,7 @@ func main() {
 		defer logger.Close()
 	}
 
-	log.Release("Leaf %v starting up", version)
+	log.Release("zergnest %v starting up", version)
 
 	argsInit()
 
