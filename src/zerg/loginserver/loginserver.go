@@ -5,16 +5,19 @@ import (
 	"net/http"
 
 	"zerg/log"
-
-	PB_Login "zerg/protobuf/PB_Login/go"
+	"zerg/zerror"
 
 	"zerg/conf"
 
-	"github.com/golang/protobuf/proto"
+	"zerg/loginserver/loginservermsg"
+	"zerg/routermanager"
 )
 
-func serveHome(w http.ResponseWriter, r *http.Request) {
+func initMondle() {
+	loginservermsg.Init()
+}
 
+func serveHome(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		http.Error(w, "Not found", 404)
 		return
@@ -25,17 +28,21 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 	}
 
 	body, err := ioutil.ReadAll(r.Body)
-	newLoginRet := &PB_Login.CS11001{}
-	err = proto.Unmarshal(body, newLoginRet)
 	if err != nil {
-		log.Error("unmarshaling error: ", err)
+		w.Write([]byte(zerror.New("http:", err.Error()).Error()))
+		return
 	} else {
-		log.Debug(string(body))
+		retBuf, err := routermanager.DoMessageBuffs(body)
+		if err != nil {
+			w.Write([]byte(zerror.New("http:", err.Error()).Error()))
+		} else {
+			w.Write(retBuf)
+		}
 	}
-
 }
 
 func StartServer() {
+	initMondle()
 	http.HandleFunc("/", serveHome)
 	err := http.ListenAndServe(conf.LoginServerPort, nil)
 	if err != nil {
