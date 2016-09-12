@@ -538,8 +538,6 @@ proto.pb_message.PB_ServerInfo.toObject = function(includeInstance, msg) {
     serverid: msg.getServerid(),
     servername: msg.getServername(),
     serverurl: msg.getServerurl(),
-    tcpip: msg.getTcpip(),
-    tcpport: msg.getTcpport(),
     status: msg.getStatus()
   };
 
@@ -590,14 +588,6 @@ proto.pb_message.PB_ServerInfo.deserializeBinaryFromReader = function(msg, reade
       msg.setServerurl(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setTcpip(value);
-      break;
-    case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setTcpport(value);
-      break;
-    case 6:
       var value = /** @type {!proto.pb_message.PB_ServerInfo.PB_ServerStatus} */ (reader.readEnum());
       msg.setStatus(value);
       break;
@@ -660,24 +650,10 @@ proto.pb_message.PB_ServerInfo.prototype.serializeBinaryToWriter = function (wri
       f
     );
   }
-  f = this.getTcpip();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
-  f = this.getTcpport();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
-      f
-    );
-  }
   f = this.getStatus();
   if (f !== 0.0) {
     writer.writeEnum(
-      6,
+      4,
       f
     );
   }
@@ -739,47 +715,17 @@ proto.pb_message.PB_ServerInfo.prototype.setServerurl = function(value) {
 
 
 /**
- * optional string tcpIp = 4;
- * @return {string}
- */
-proto.pb_message.PB_ServerInfo.prototype.getTcpip = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
-};
-
-
-/** @param {string} value  */
-proto.pb_message.PB_ServerInfo.prototype.setTcpip = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional string tcpPort = 5;
- * @return {string}
- */
-proto.pb_message.PB_ServerInfo.prototype.getTcpport = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
-};
-
-
-/** @param {string} value  */
-proto.pb_message.PB_ServerInfo.prototype.setTcpport = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional PB_ServerStatus status = 6;
+ * optional PB_ServerStatus status = 4;
  * @return {!proto.pb_message.PB_ServerInfo.PB_ServerStatus}
  */
 proto.pb_message.PB_ServerInfo.prototype.getStatus = function() {
-  return /** @type {!proto.pb_message.PB_ServerInfo.PB_ServerStatus} */ (jspb.Message.getFieldProto3(this, 6, 0));
+  return /** @type {!proto.pb_message.PB_ServerInfo.PB_ServerStatus} */ (jspb.Message.getFieldProto3(this, 4, 0));
 };
 
 
 /** @param {!proto.pb_message.PB_ServerInfo.PB_ServerStatus} value  */
 proto.pb_message.PB_ServerInfo.prototype.setStatus = function(value) {
-  jspb.Message.setField(this, 6, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 
@@ -1513,8 +1459,8 @@ proto.pb_message.SC11002.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pb_message.SC11002.toObject = function(includeInstance, msg) {
   var f, obj = {
-    accountid: msg.getAccountid(),
     sessionid: msg.getSessionid(),
+    localplayerid: msg.getLocalplayerid(),
     platformaccountid: msg.getPlatformaccountid(),
     platformaccountname: msg.getPlatformaccountname(),
     accesstoken: msg.getAccesstoken(),
@@ -1559,12 +1505,12 @@ proto.pb_message.SC11002.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
-      msg.setAccountid(value);
-      break;
-    case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setSessionid(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setLocalplayerid(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -1628,16 +1574,16 @@ proto.pb_message.SC11002.prototype.serializeBinary = function() {
  */
 proto.pb_message.SC11002.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getAccountid();
-  if (f !== 0) {
-    writer.writeInt64(
+  f = this.getSessionid();
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
   }
-  f = this.getSessionid();
-  if (f.length > 0) {
-    writer.writeString(
+  f = this.getLocalplayerid();
+  if (f !== 0) {
+    writer.writeInt64(
       2,
       f
     );
@@ -1692,31 +1638,31 @@ proto.pb_message.SC11002.prototype.cloneMessage = function() {
 
 
 /**
- * optional int64 accountId = 1;
- * @return {number}
- */
-proto.pb_message.SC11002.prototype.getAccountid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
-};
-
-
-/** @param {number} value  */
-proto.pb_message.SC11002.prototype.setAccountid = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-/**
- * optional string sessionId = 2;
+ * optional string sessionId = 1;
  * @return {string}
  */
 proto.pb_message.SC11002.prototype.getSessionid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 2, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
 /** @param {string} value  */
 proto.pb_message.SC11002.prototype.setSessionid = function(value) {
+  jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional int64 localPlayerId = 2;
+ * @return {number}
+ */
+proto.pb_message.SC11002.prototype.getLocalplayerid = function() {
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 2, 0));
+};
+
+
+/** @param {number} value  */
+proto.pb_message.SC11002.prototype.setLocalplayerid = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 

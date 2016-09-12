@@ -8,13 +8,11 @@ import (
 	"zerg/zerror"
 
 	"zerg/conf"
-
-	"zerg/loginserver/loginservermsg"
 	"zerg/routermanager"
 )
 
 func initMondle() {
-	loginservermsg.Init()
+	RouterManageInit()
 }
 
 func serveHome(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +34,11 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			w.Write([]byte(zerror.New("http:", err.Error()).Error()))
 		} else {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+			w.Header().Set("Access-Control-Allow-Methods", "POST")
+			retBuf = []byte("dlfjasdoifujpasokd")
 			w.Write(retBuf)
+
 		}
 	}
 }
@@ -44,7 +46,7 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 func StartServer() {
 	initMondle()
 	http.HandleFunc("/", serveHome)
-	err := http.ListenAndServe(conf.LoginServerPort, nil)
+	err := http.ListenAndServe(conf.LoginServerUrls[0].GetServerSeparatorPort(), nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}

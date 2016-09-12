@@ -59,3 +59,15 @@ func RetErrorMsg(errorCode pb_message.SC10000ErrorCodeType, errOpcode int32, err
 
 	return msgBytes, nil
 }
+
+func GetMsgPacket(msgId int32, opCode int32, msgBuf []byte) ([]byte, error) {
+	msgPacket := &pb_message.PB_CommonMsg{
+		msgId,
+		opCode,
+		msgBuf,
+	}
+
+	msgPacketBuf, err := proto.Marshal(msgPacket)
+
+	return msgPacketBuf, err
+}
