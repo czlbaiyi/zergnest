@@ -1,4 +1,4 @@
-syntax = "proto3";
+syntax = "proto2";
 
 package pb_message;
 
@@ -11,9 +11,9 @@ Message
 //通用消息包
 message PB_CommonMsg
 {
-	int32 msgId = 1;	//Id标识
-	int32 opCode = 2; 	//操作标识
-	bytes msgBuf = 3;	//消息类型
+	optional int32 msgId = 1;	//Id标识
+	optional int32 opCode = 2; 	//操作标识
+	optional bytes msgBuf = 3;	//消息类型
 }
 
 
@@ -31,9 +31,9 @@ message SC10000
 		PB_MsgPraseError = 1;	//protobuf 解析失败
 		PB_MsgDealError = 2;	//消息处理失败 
 	}
-	string errorMsg = 1;//错误信息  
-	int32 csOpcode = 2;//处理客户端哪条协议出的错
-    errorCodeType errorCode = 3;//错误代码（1 - 100 公共错误处理代码 1、在当前页，弹errorMsg提示框 2、平台验证失败）
+	optional string errorMsg = 1;//错误信息  
+	optional int32 csOpcode = 2;//处理客户端哪条协议出的错
+    optional errorCodeType errorCode = 3;//错误代码（1 - 100 公共错误处理代码 1、在当前页，弹errorMsg提示框 2、平台验证失败）
 } 
 
 ////////////////////////////////////////////////登陆协议///////////////////////////////////
@@ -50,10 +50,10 @@ message PB_ServerInfo
 		busy = 2;//爆满
 		maintain = 3;//维护中
 	}
-	int32 serverId = 1;			//服务器唯一标示
-	string serverName = 2;		//服务器名称
-	string serverUrl = 3;		//地址
-	PB_ServerStatus status = 4;	//状态
+	optional int32 serverId = 1;			//服务器唯一标示
+	optional string serverName = 2;		//服务器名称
+	optional string serverUrl = 3;		//地址
+	optional PB_ServerStatus status = 4;	//状态
 }
 
 message PB_AccountLoginHistory
@@ -63,13 +63,13 @@ message PB_AccountLoginHistory
 		man = 0;//男
 		women = 1;//女
 	}
-	int32 serverId = 1;//服务器唯一标示
-	PB_LoginRoleTye roleType = 2;//角色类型
-	string roleName = 3;//
-	int32 roleLevel = 4;//
-	int32 awakeLevel = 5;//
-	int32 vipLevel = 6;//
-	int64 updateTime = 7;//
+	optional int32 serverId = 1;//服务器唯一标示
+	optional PB_LoginRoleTye roleType = 2;//角色类型
+	optional string roleName = 3;//
+	optional int32 roleLevel = 4;//
+	optional int32 awakeLevel = 5;//
+	optional int32 vipLevel = 6;//
+	optional int64 updateTime = 7;//
 }
 
 //HTTP头数据：opcode:消息号  sessionId:会话ID
@@ -89,18 +89,18 @@ message CS11001
 		platform_login = 1;//畅游测试账号密码登陆方式
 	}
 
-	PB_PlatformType platformType = 1;//平台类型（登陆方式）
+	optional PB_PlatformType platformType = 1;//平台类型（登陆方式）
 
 	//账号信息
-	string platformAccountId = 2;//平台账号ID(或本地账号)
-	string authId = 3;//平台验证串(或本地密码)
+	optional string platformAccountId = 2;//平台账号ID(或本地账号)
+	optional string authId = 3;//平台验证串(或本地密码)
 
 	//客户端硬件信息
-	string clientType = 4;//客户端类型：“IOS”，“ANDROID”或者“OTHER”
-	string uuid = 5;//客户端唯一标示(IOS为UUID，ANDROID为IMEI，PC为MAC地址)
+	optional string clientType = 4;//客户端类型：“IOS”，“ANDROID”或者“OTHER”
+	optional string uuid = 5;//客户端唯一标示(IOS为UUID，ANDROID为IMEI，PC为MAC地址)
 
-	int32 channelId = 6;//渠道ID(渠道编号，如：3006,3009)
-	int64 adChannelId = 7;//推广渠道ID(运营提供的推广渠道标示，服务器日志埋点用，如：1011262002）
+	optional int32 channelId = 6;//渠道ID(渠道编号，如：3006,3009)
+	optional int64 adChannelId = 7;//推广渠道ID(运营提供的推广渠道标示，服务器日志埋点用，如：1011262002）
 }
 
 //登陆返回 SC11002
@@ -111,11 +111,11 @@ message SC11002
 		PB_Temp = 0;
 		PB_PackType = 10001;
 	}
-	string sessionId = 1;		 						//本地应用生成的账号会话id
-	int64 localPlayerId = 2;		 					//本地应用的账号id
-	string platformAccountId = 3;						//平台生成的账号ID（畅游账号）
-	string platformAccountName = 4; 					//oid
-	string accessToken = 5;
+	optional string sessionId = 1;		 						//本地应用生成的账号会话id
+	optional int64 localPlayerId = 2;		 					//本地应用的账号id
+	optional string platformAccountId = 3;						//平台生成的账号ID（畅游账号）
+	optional string platformAccountName = 4; 					//oid
+	optional string accessToken = 5;
 	repeated PB_AccountLoginHistory loginHistories = 6; //角色信息
     repeated PB_ServerInfo serverInfos = 7;				//服务器列表
 }

@@ -1,6 +1,6 @@
-INFO	?	main	2016-09-12T05:55:29.893Z	org.javacs.Main#connectToNode	Connected to parent using socket on port 55282
-INFO	?	main	2016-09-12T05:55:30.050Z	org.javacs.JavaLanguageServer#doLint	Lint c:\Czl_Developer\GalaxyWolrd_Poj3\proj.android\src\com\changyou\mgp\sdk\mbi\platform\content\MainActivity.java
-SEVERE	?	main	2016-09-12T05:55:30.057Z	org.javacs.Main$4#onError	Can't find configuration file for c:\Czl_Developer\GalaxyWolrd_Poj3\proj.android\src\com\changyou\mgp\sdk\mbi\platform\content\MainActivity.java
+INFO	?	main	2016-09-16T05:47:22.278Z	org.javacs.Main#connectToNode	Connected to parent using socket on port 55282
+INFO	?	main	2016-09-16T05:47:23.984Z	org.javacs.JavaLanguageServer#doLint	Lint c:\Czl_Developer\GalaxyWolrd_Poj3\proj.android\src\com\changyou\mgp\sdk\mbi\platform\content\MainActivity.java
+SEVERE	?	main	2016-09-16T05:47:23.991Z	org.javacs.Main$4#onError	Can't find configuration file for c:\Czl_Developer\GalaxyWolrd_Poj3\proj.android\src\com\changyou\mgp\sdk\mbi\platform\content\MainActivity.java
 org.javacs.ShowMessageException: Can't find configuration file for c:\Czl_Developer\GalaxyWolrd_Poj3\proj.android\src\com\changyou\mgp\sdk\mbi\platform\content\MainActivity.java
 	at org.javacs.ShowMessageException.create(ShowMessageException.java:30)
 	at org.javacs.ShowMessageException.warning(ShowMessageException.java:21)
@@ -27,7 +27,7 @@ Caused by: org.javacs.NoJavaConfigException: Can't find configuration file for c
 	at org.javacs.JavaLanguageServer$1.didOpen(JavaLanguageServer.java:200)
 	... 13 more
 
-SEVERE	?	main	2016-09-12T05:55:30.684Z	org.javacs.Main$4#onError	Can't find configuration file for c:\Czl_Developer\GalaxyWolrd_Poj3\proj.android\src\com\changyou\mgp\sdk\mbi\platform\content\MainActivity.java
+SEVERE	?	main	2016-09-16T05:49:38.767Z	org.javacs.Main$4#onError	Can't find configuration file for c:\Czl_Developer\GalaxyWolrd_Poj3\proj.android\src\com\changyou\mgp\sdk\mbi\platform\content\MainActivity.java
 org.javacs.NoJavaConfigException: Can't find configuration file for c:\Czl_Developer\GalaxyWolrd_Poj3\proj.android\src\com\changyou\mgp\sdk\mbi\platform\content\MainActivity.java
 	at org.javacs.JavaLanguageServer.lambda$findCompiler$22(JavaLanguageServer.java:462)
 	at java.util.Optional.orElseThrow(Optional.java:290)
