@@ -68,8 +68,8 @@ proto.pb_message.PB_CommonMsg.prototype.toObject = function(opt_includeInstance)
  */
 proto.pb_message.PB_CommonMsg.toObject = function(includeInstance, msg) {
   var f, obj = {
-    msgid: jspb.Message.getField(msg, 1),
-    opcode: jspb.Message.getField(msg, 2),
+    msgid: msg.getMsgid(),
+    opcode: msg.getOpcode(),
     msgbuf: msg.getMsgbuf_asB64()
   };
 
@@ -157,22 +157,22 @@ proto.pb_message.PB_CommonMsg.prototype.serializeBinary = function() {
  */
 proto.pb_message.PB_CommonMsg.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = jspb.Message.getField(this, 1);
-  if (f != null) {
+  f = this.getMsgid();
+  if (f !== 0) {
     writer.writeInt32(
       1,
       f
     );
   }
-  f = jspb.Message.getField(this, 2);
-  if (f != null) {
+  f = this.getOpcode();
+  if (f !== 0) {
     writer.writeInt32(
       2,
       f
     );
   }
-  f = jspb.Message.getField(this, 3);
-  if (f != null) {
+  f = this.getMsgbuf_asU8();
+  if (f.length > 0) {
     writer.writeBytes(
       3,
       f
@@ -195,27 +195,13 @@ proto.pb_message.PB_CommonMsg.prototype.cloneMessage = function() {
  * @return {number}
  */
 proto.pb_message.PB_CommonMsg.prototype.getMsgid = function() {
-  return /** @type {number} */ (!this.hasMsgid() ? 0 : jspb.Message.getField(this, 1));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.PB_CommonMsg.prototype.setMsgid = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-proto.pb_message.PB_CommonMsg.prototype.clearMsgid = function() {
-  jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_CommonMsg.prototype.hasMsgid = function() {
-  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -224,36 +210,22 @@ proto.pb_message.PB_CommonMsg.prototype.hasMsgid = function() {
  * @return {number}
  */
 proto.pb_message.PB_CommonMsg.prototype.getOpcode = function() {
-  return /** @type {number} */ (!this.hasOpcode() ? 0 : jspb.Message.getField(this, 2));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 2, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.PB_CommonMsg.prototype.setOpcode = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
-proto.pb_message.PB_CommonMsg.prototype.clearOpcode = function() {
-  jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_CommonMsg.prototype.hasOpcode = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
 /**
  * optional bytes msgBuf = 3;
- * @return {(string|Uint8Array)}
+ * @return {!(string|Uint8Array)}
  */
 proto.pb_message.PB_CommonMsg.prototype.getMsgbuf = function() {
-  return /** @type {(string|Uint8Array)} */ (!this.hasMsgbuf() ? "" : jspb.Message.getField(this, 3));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
@@ -273,31 +245,17 @@ proto.pb_message.PB_CommonMsg.prototype.getMsgbuf_asB64 = function() {
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getMsgbuf()`
- * @return {Uint8Array}
+ * @return {!Uint8Array}
  */
 proto.pb_message.PB_CommonMsg.prototype.getMsgbuf_asU8 = function() {
-  return /** @type {Uint8Array} */ (jspb.Message.bytesAsU8(
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
       this.getMsgbuf()));
 };
 
 
-/** @param {(string|Uint8Array)|undefined} value  */
+/** @param {!(string|Uint8Array)} value  */
 proto.pb_message.PB_CommonMsg.prototype.setMsgbuf = function(value) {
   jspb.Message.setField(this, 3, value);
-};
-
-
-proto.pb_message.PB_CommonMsg.prototype.clearMsgbuf = function() {
-  jspb.Message.setField(this, 3, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_CommonMsg.prototype.hasMsgbuf = function() {
-  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -347,9 +305,9 @@ proto.pb_message.SC10000.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pb_message.SC10000.toObject = function(includeInstance, msg) {
   var f, obj = {
-    errormsg: jspb.Message.getField(msg, 1),
-    csopcode: jspb.Message.getField(msg, 2),
-    errorcode: jspb.Message.getField(msg, 3)
+    errormsg: msg.getErrormsg(),
+    csopcode: msg.getCsopcode(),
+    errorcode: msg.getErrorcode()
   };
 
   if (includeInstance) {
@@ -436,22 +394,22 @@ proto.pb_message.SC10000.prototype.serializeBinary = function() {
  */
 proto.pb_message.SC10000.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = jspb.Message.getField(this, 1);
-  if (f != null) {
+  f = this.getErrormsg();
+  if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = jspb.Message.getField(this, 2);
-  if (f != null) {
+  f = this.getCsopcode();
+  if (f !== 0) {
     writer.writeInt32(
       2,
       f
     );
   }
-  f = jspb.Message.getField(this, 3);
-  if (f != null) {
+  f = this.getErrorcode();
+  if (f !== 0.0) {
     writer.writeEnum(
       3,
       f
@@ -474,27 +432,13 @@ proto.pb_message.SC10000.prototype.cloneMessage = function() {
  * @return {string}
  */
 proto.pb_message.SC10000.prototype.getErrormsg = function() {
-  return /** @type {string} */ (!this.hasErrormsg() ? "" : jspb.Message.getField(this, 1));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.SC10000.prototype.setErrormsg = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-proto.pb_message.SC10000.prototype.clearErrormsg = function() {
-  jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.SC10000.prototype.hasErrormsg = function() {
-  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -503,56 +447,28 @@ proto.pb_message.SC10000.prototype.hasErrormsg = function() {
  * @return {number}
  */
 proto.pb_message.SC10000.prototype.getCsopcode = function() {
-  return /** @type {number} */ (!this.hasCsopcode() ? 0 : jspb.Message.getField(this, 2));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 2, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.SC10000.prototype.setCsopcode = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
-proto.pb_message.SC10000.prototype.clearCsopcode = function() {
-  jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.SC10000.prototype.hasCsopcode = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
 /**
  * optional errorCodeType errorCode = 3;
- * @return {proto.pb_message.SC10000.errorCodeType}
+ * @return {!proto.pb_message.SC10000.errorCodeType}
  */
 proto.pb_message.SC10000.prototype.getErrorcode = function() {
-  return /** @type {proto.pb_message.SC10000.errorCodeType} */ (!this.hasErrorcode() ? 0 : jspb.Message.getField(this, 3));
+  return /** @type {!proto.pb_message.SC10000.errorCodeType} */ (jspb.Message.getFieldProto3(this, 3, 0));
 };
 
 
-/** @param {proto.pb_message.SC10000.errorCodeType|undefined} value  */
+/** @param {!proto.pb_message.SC10000.errorCodeType} value  */
 proto.pb_message.SC10000.prototype.setErrorcode = function(value) {
   jspb.Message.setField(this, 3, value);
-};
-
-
-proto.pb_message.SC10000.prototype.clearErrorcode = function() {
-  jspb.Message.setField(this, 3, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.SC10000.prototype.hasErrorcode = function() {
-  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -619,10 +535,10 @@ proto.pb_message.PB_ServerInfo.prototype.toObject = function(opt_includeInstance
  */
 proto.pb_message.PB_ServerInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
-    serverid: jspb.Message.getField(msg, 1),
-    servername: jspb.Message.getField(msg, 2),
-    serverurl: jspb.Message.getField(msg, 3),
-    status: jspb.Message.getField(msg, 4)
+    serverid: msg.getServerid(),
+    servername: msg.getServername(),
+    serverurl: msg.getServerurl(),
+    status: msg.getStatus()
   };
 
   if (includeInstance) {
@@ -713,29 +629,29 @@ proto.pb_message.PB_ServerInfo.prototype.serializeBinary = function() {
  */
 proto.pb_message.PB_ServerInfo.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = jspb.Message.getField(this, 1);
-  if (f != null) {
+  f = this.getServerid();
+  if (f !== 0) {
     writer.writeInt32(
       1,
       f
     );
   }
-  f = jspb.Message.getField(this, 2);
-  if (f != null) {
+  f = this.getServername();
+  if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = jspb.Message.getField(this, 3);
-  if (f != null) {
+  f = this.getServerurl();
+  if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = jspb.Message.getField(this, 4);
-  if (f != null) {
+  f = this.getStatus();
+  if (f !== 0.0) {
     writer.writeEnum(
       4,
       f
@@ -758,27 +674,13 @@ proto.pb_message.PB_ServerInfo.prototype.cloneMessage = function() {
  * @return {number}
  */
 proto.pb_message.PB_ServerInfo.prototype.getServerid = function() {
-  return /** @type {number} */ (!this.hasServerid() ? 0 : jspb.Message.getField(this, 1));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.PB_ServerInfo.prototype.setServerid = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-proto.pb_message.PB_ServerInfo.prototype.clearServerid = function() {
-  jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_ServerInfo.prototype.hasServerid = function() {
-  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -787,27 +689,13 @@ proto.pb_message.PB_ServerInfo.prototype.hasServerid = function() {
  * @return {string}
  */
 proto.pb_message.PB_ServerInfo.prototype.getServername = function() {
-  return /** @type {string} */ (!this.hasServername() ? "" : jspb.Message.getField(this, 2));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 2, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.PB_ServerInfo.prototype.setServername = function(value) {
   jspb.Message.setField(this, 2, value);
-};
-
-
-proto.pb_message.PB_ServerInfo.prototype.clearServername = function() {
-  jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_ServerInfo.prototype.hasServername = function() {
-  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -816,56 +704,28 @@ proto.pb_message.PB_ServerInfo.prototype.hasServername = function() {
  * @return {string}
  */
 proto.pb_message.PB_ServerInfo.prototype.getServerurl = function() {
-  return /** @type {string} */ (!this.hasServerurl() ? "" : jspb.Message.getField(this, 3));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.PB_ServerInfo.prototype.setServerurl = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
-proto.pb_message.PB_ServerInfo.prototype.clearServerurl = function() {
-  jspb.Message.setField(this, 3, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_ServerInfo.prototype.hasServerurl = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
 /**
  * optional PB_ServerStatus status = 4;
- * @return {proto.pb_message.PB_ServerInfo.PB_ServerStatus}
+ * @return {!proto.pb_message.PB_ServerInfo.PB_ServerStatus}
  */
 proto.pb_message.PB_ServerInfo.prototype.getStatus = function() {
-  return /** @type {proto.pb_message.PB_ServerInfo.PB_ServerStatus} */ (!this.hasStatus() ? 0 : jspb.Message.getField(this, 4));
+  return /** @type {!proto.pb_message.PB_ServerInfo.PB_ServerStatus} */ (jspb.Message.getFieldProto3(this, 4, 0));
 };
 
 
-/** @param {proto.pb_message.PB_ServerInfo.PB_ServerStatus|undefined} value  */
+/** @param {!proto.pb_message.PB_ServerInfo.PB_ServerStatus} value  */
 proto.pb_message.PB_ServerInfo.prototype.setStatus = function(value) {
   jspb.Message.setField(this, 4, value);
-};
-
-
-proto.pb_message.PB_ServerInfo.prototype.clearStatus = function() {
-  jspb.Message.setField(this, 4, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_ServerInfo.prototype.hasStatus = function() {
-  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -925,13 +785,13 @@ proto.pb_message.PB_AccountLoginHistory.prototype.toObject = function(opt_includ
  */
 proto.pb_message.PB_AccountLoginHistory.toObject = function(includeInstance, msg) {
   var f, obj = {
-    serverid: jspb.Message.getField(msg, 1),
-    roletype: jspb.Message.getField(msg, 2),
-    rolename: jspb.Message.getField(msg, 3),
-    rolelevel: jspb.Message.getField(msg, 4),
-    awakelevel: jspb.Message.getField(msg, 5),
-    viplevel: jspb.Message.getField(msg, 6),
-    updatetime: jspb.Message.getField(msg, 7)
+    serverid: msg.getServerid(),
+    roletype: msg.getRoletype(),
+    rolename: msg.getRolename(),
+    rolelevel: msg.getRolelevel(),
+    awakelevel: msg.getAwakelevel(),
+    viplevel: msg.getViplevel(),
+    updatetime: msg.getUpdatetime()
   };
 
   if (includeInstance) {
@@ -1034,50 +894,50 @@ proto.pb_message.PB_AccountLoginHistory.prototype.serializeBinary = function() {
  */
 proto.pb_message.PB_AccountLoginHistory.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = jspb.Message.getField(this, 1);
-  if (f != null) {
+  f = this.getServerid();
+  if (f !== 0) {
     writer.writeInt32(
       1,
       f
     );
   }
-  f = jspb.Message.getField(this, 2);
-  if (f != null) {
+  f = this.getRoletype();
+  if (f !== 0.0) {
     writer.writeEnum(
       2,
       f
     );
   }
-  f = jspb.Message.getField(this, 3);
-  if (f != null) {
+  f = this.getRolename();
+  if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = jspb.Message.getField(this, 4);
-  if (f != null) {
+  f = this.getRolelevel();
+  if (f !== 0) {
     writer.writeInt32(
       4,
       f
     );
   }
-  f = jspb.Message.getField(this, 5);
-  if (f != null) {
+  f = this.getAwakelevel();
+  if (f !== 0) {
     writer.writeInt32(
       5,
       f
     );
   }
-  f = jspb.Message.getField(this, 6);
-  if (f != null) {
+  f = this.getViplevel();
+  if (f !== 0) {
     writer.writeInt32(
       6,
       f
     );
   }
-  f = jspb.Message.getField(this, 7);
-  if (f != null) {
+  f = this.getUpdatetime();
+  if (f !== 0) {
     writer.writeInt64(
       7,
       f
@@ -1100,56 +960,28 @@ proto.pb_message.PB_AccountLoginHistory.prototype.cloneMessage = function() {
  * @return {number}
  */
 proto.pb_message.PB_AccountLoginHistory.prototype.getServerid = function() {
-  return /** @type {number} */ (!this.hasServerid() ? 0 : jspb.Message.getField(this, 1));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.PB_AccountLoginHistory.prototype.setServerid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
-proto.pb_message.PB_AccountLoginHistory.prototype.clearServerid = function() {
-  jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_AccountLoginHistory.prototype.hasServerid = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
 /**
  * optional PB_LoginRoleTye roleType = 2;
- * @return {proto.pb_message.PB_AccountLoginHistory.PB_LoginRoleTye}
+ * @return {!proto.pb_message.PB_AccountLoginHistory.PB_LoginRoleTye}
  */
 proto.pb_message.PB_AccountLoginHistory.prototype.getRoletype = function() {
-  return /** @type {proto.pb_message.PB_AccountLoginHistory.PB_LoginRoleTye} */ (!this.hasRoletype() ? 0 : jspb.Message.getField(this, 2));
+  return /** @type {!proto.pb_message.PB_AccountLoginHistory.PB_LoginRoleTye} */ (jspb.Message.getFieldProto3(this, 2, 0));
 };
 
 
-/** @param {proto.pb_message.PB_AccountLoginHistory.PB_LoginRoleTye|undefined} value  */
+/** @param {!proto.pb_message.PB_AccountLoginHistory.PB_LoginRoleTye} value  */
 proto.pb_message.PB_AccountLoginHistory.prototype.setRoletype = function(value) {
   jspb.Message.setField(this, 2, value);
-};
-
-
-proto.pb_message.PB_AccountLoginHistory.prototype.clearRoletype = function() {
-  jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_AccountLoginHistory.prototype.hasRoletype = function() {
-  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -1158,27 +990,13 @@ proto.pb_message.PB_AccountLoginHistory.prototype.hasRoletype = function() {
  * @return {string}
  */
 proto.pb_message.PB_AccountLoginHistory.prototype.getRolename = function() {
-  return /** @type {string} */ (!this.hasRolename() ? "" : jspb.Message.getField(this, 3));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.PB_AccountLoginHistory.prototype.setRolename = function(value) {
   jspb.Message.setField(this, 3, value);
-};
-
-
-proto.pb_message.PB_AccountLoginHistory.prototype.clearRolename = function() {
-  jspb.Message.setField(this, 3, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_AccountLoginHistory.prototype.hasRolename = function() {
-  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -1187,27 +1005,13 @@ proto.pb_message.PB_AccountLoginHistory.prototype.hasRolename = function() {
  * @return {number}
  */
 proto.pb_message.PB_AccountLoginHistory.prototype.getRolelevel = function() {
-  return /** @type {number} */ (!this.hasRolelevel() ? 0 : jspb.Message.getField(this, 4));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 4, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.PB_AccountLoginHistory.prototype.setRolelevel = function(value) {
   jspb.Message.setField(this, 4, value);
-};
-
-
-proto.pb_message.PB_AccountLoginHistory.prototype.clearRolelevel = function() {
-  jspb.Message.setField(this, 4, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_AccountLoginHistory.prototype.hasRolelevel = function() {
-  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -1216,27 +1020,13 @@ proto.pb_message.PB_AccountLoginHistory.prototype.hasRolelevel = function() {
  * @return {number}
  */
 proto.pb_message.PB_AccountLoginHistory.prototype.getAwakelevel = function() {
-  return /** @type {number} */ (!this.hasAwakelevel() ? 0 : jspb.Message.getField(this, 5));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 5, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.PB_AccountLoginHistory.prototype.setAwakelevel = function(value) {
   jspb.Message.setField(this, 5, value);
-};
-
-
-proto.pb_message.PB_AccountLoginHistory.prototype.clearAwakelevel = function() {
-  jspb.Message.setField(this, 5, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_AccountLoginHistory.prototype.hasAwakelevel = function() {
-  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -1245,27 +1035,13 @@ proto.pb_message.PB_AccountLoginHistory.prototype.hasAwakelevel = function() {
  * @return {number}
  */
 proto.pb_message.PB_AccountLoginHistory.prototype.getViplevel = function() {
-  return /** @type {number} */ (!this.hasViplevel() ? 0 : jspb.Message.getField(this, 6));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 6, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.PB_AccountLoginHistory.prototype.setViplevel = function(value) {
   jspb.Message.setField(this, 6, value);
-};
-
-
-proto.pb_message.PB_AccountLoginHistory.prototype.clearViplevel = function() {
-  jspb.Message.setField(this, 6, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_AccountLoginHistory.prototype.hasViplevel = function() {
-  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -1274,27 +1050,13 @@ proto.pb_message.PB_AccountLoginHistory.prototype.hasViplevel = function() {
  * @return {number}
  */
 proto.pb_message.PB_AccountLoginHistory.prototype.getUpdatetime = function() {
-  return /** @type {number} */ (!this.hasUpdatetime() ? 0 : jspb.Message.getField(this, 7));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.PB_AccountLoginHistory.prototype.setUpdatetime = function(value) {
   jspb.Message.setField(this, 7, value);
-};
-
-
-proto.pb_message.PB_AccountLoginHistory.prototype.clearUpdatetime = function() {
-  jspb.Message.setField(this, 7, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.PB_AccountLoginHistory.prototype.hasUpdatetime = function() {
-  return jspb.Message.getField(this, 7) != null;
 };
 
 
@@ -1352,13 +1114,13 @@ proto.pb_message.CS11001.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pb_message.CS11001.toObject = function(includeInstance, msg) {
   var f, obj = {
-    platformtype: jspb.Message.getField(msg, 1),
-    platformaccountid: jspb.Message.getField(msg, 2),
-    authid: jspb.Message.getField(msg, 3),
-    clienttype: jspb.Message.getField(msg, 4),
-    uuid: jspb.Message.getField(msg, 5),
-    channelid: jspb.Message.getField(msg, 6),
-    adchannelid: jspb.Message.getField(msg, 7)
+    platformtype: msg.getPlatformtype(),
+    platformaccountid: msg.getPlatformaccountid(),
+    authid: msg.getAuthid(),
+    clienttype: msg.getClienttype(),
+    uuid: msg.getUuid(),
+    channelid: msg.getChannelid(),
+    adchannelid: msg.getAdchannelid()
   };
 
   if (includeInstance) {
@@ -1461,50 +1223,50 @@ proto.pb_message.CS11001.prototype.serializeBinary = function() {
  */
 proto.pb_message.CS11001.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = jspb.Message.getField(this, 1);
-  if (f != null) {
+  f = this.getPlatformtype();
+  if (f !== 0.0) {
     writer.writeEnum(
       1,
       f
     );
   }
-  f = jspb.Message.getField(this, 2);
-  if (f != null) {
+  f = this.getPlatformaccountid();
+  if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = jspb.Message.getField(this, 3);
-  if (f != null) {
+  f = this.getAuthid();
+  if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = jspb.Message.getField(this, 4);
-  if (f != null) {
+  f = this.getClienttype();
+  if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = jspb.Message.getField(this, 5);
-  if (f != null) {
+  f = this.getUuid();
+  if (f.length > 0) {
     writer.writeString(
       5,
       f
     );
   }
-  f = jspb.Message.getField(this, 6);
-  if (f != null) {
+  f = this.getChannelid();
+  if (f !== 0) {
     writer.writeInt32(
       6,
       f
     );
   }
-  f = jspb.Message.getField(this, 7);
-  if (f != null) {
+  f = this.getAdchannelid();
+  if (f !== 0) {
     writer.writeInt64(
       7,
       f
@@ -1524,30 +1286,16 @@ proto.pb_message.CS11001.prototype.cloneMessage = function() {
 
 /**
  * optional PB_PlatformType platformType = 1;
- * @return {proto.pb_message.CS11001.PB_PlatformType}
+ * @return {!proto.pb_message.CS11001.PB_PlatformType}
  */
 proto.pb_message.CS11001.prototype.getPlatformtype = function() {
-  return /** @type {proto.pb_message.CS11001.PB_PlatformType} */ (!this.hasPlatformtype() ? 0 : jspb.Message.getField(this, 1));
+  return /** @type {!proto.pb_message.CS11001.PB_PlatformType} */ (jspb.Message.getFieldProto3(this, 1, 0));
 };
 
 
-/** @param {proto.pb_message.CS11001.PB_PlatformType|undefined} value  */
+/** @param {!proto.pb_message.CS11001.PB_PlatformType} value  */
 proto.pb_message.CS11001.prototype.setPlatformtype = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-proto.pb_message.CS11001.prototype.clearPlatformtype = function() {
-  jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.CS11001.prototype.hasPlatformtype = function() {
-  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -1556,27 +1304,13 @@ proto.pb_message.CS11001.prototype.hasPlatformtype = function() {
  * @return {string}
  */
 proto.pb_message.CS11001.prototype.getPlatformaccountid = function() {
-  return /** @type {string} */ (!this.hasPlatformaccountid() ? "" : jspb.Message.getField(this, 2));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 2, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.CS11001.prototype.setPlatformaccountid = function(value) {
   jspb.Message.setField(this, 2, value);
-};
-
-
-proto.pb_message.CS11001.prototype.clearPlatformaccountid = function() {
-  jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.CS11001.prototype.hasPlatformaccountid = function() {
-  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -1585,27 +1319,13 @@ proto.pb_message.CS11001.prototype.hasPlatformaccountid = function() {
  * @return {string}
  */
 proto.pb_message.CS11001.prototype.getAuthid = function() {
-  return /** @type {string} */ (!this.hasAuthid() ? "" : jspb.Message.getField(this, 3));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.CS11001.prototype.setAuthid = function(value) {
   jspb.Message.setField(this, 3, value);
-};
-
-
-proto.pb_message.CS11001.prototype.clearAuthid = function() {
-  jspb.Message.setField(this, 3, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.CS11001.prototype.hasAuthid = function() {
-  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -1614,27 +1334,13 @@ proto.pb_message.CS11001.prototype.hasAuthid = function() {
  * @return {string}
  */
 proto.pb_message.CS11001.prototype.getClienttype = function() {
-  return /** @type {string} */ (!this.hasClienttype() ? "" : jspb.Message.getField(this, 4));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.CS11001.prototype.setClienttype = function(value) {
   jspb.Message.setField(this, 4, value);
-};
-
-
-proto.pb_message.CS11001.prototype.clearClienttype = function() {
-  jspb.Message.setField(this, 4, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.CS11001.prototype.hasClienttype = function() {
-  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -1643,27 +1349,13 @@ proto.pb_message.CS11001.prototype.hasClienttype = function() {
  * @return {string}
  */
 proto.pb_message.CS11001.prototype.getUuid = function() {
-  return /** @type {string} */ (!this.hasUuid() ? "" : jspb.Message.getField(this, 5));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.CS11001.prototype.setUuid = function(value) {
   jspb.Message.setField(this, 5, value);
-};
-
-
-proto.pb_message.CS11001.prototype.clearUuid = function() {
-  jspb.Message.setField(this, 5, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.CS11001.prototype.hasUuid = function() {
-  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -1672,27 +1364,13 @@ proto.pb_message.CS11001.prototype.hasUuid = function() {
  * @return {number}
  */
 proto.pb_message.CS11001.prototype.getChannelid = function() {
-  return /** @type {number} */ (!this.hasChannelid() ? 0 : jspb.Message.getField(this, 6));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 6, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.CS11001.prototype.setChannelid = function(value) {
   jspb.Message.setField(this, 6, value);
-};
-
-
-proto.pb_message.CS11001.prototype.clearChannelid = function() {
-  jspb.Message.setField(this, 6, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.CS11001.prototype.hasChannelid = function() {
-  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -1701,27 +1379,13 @@ proto.pb_message.CS11001.prototype.hasChannelid = function() {
  * @return {number}
  */
 proto.pb_message.CS11001.prototype.getAdchannelid = function() {
-  return /** @type {number} */ (!this.hasAdchannelid() ? 0 : jspb.Message.getField(this, 7));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 7, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.CS11001.prototype.setAdchannelid = function(value) {
   jspb.Message.setField(this, 7, value);
-};
-
-
-proto.pb_message.CS11001.prototype.clearAdchannelid = function() {
-  jspb.Message.setField(this, 7, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.CS11001.prototype.hasAdchannelid = function() {
-  return jspb.Message.getField(this, 7) != null;
 };
 
 
@@ -1795,11 +1459,11 @@ proto.pb_message.SC11002.prototype.toObject = function(opt_includeInstance) {
  */
 proto.pb_message.SC11002.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sessionid: jspb.Message.getField(msg, 1),
-    localplayerid: jspb.Message.getField(msg, 2),
-    platformaccountid: jspb.Message.getField(msg, 3),
-    platformaccountname: jspb.Message.getField(msg, 4),
-    accesstoken: jspb.Message.getField(msg, 5),
+    sessionid: msg.getSessionid(),
+    localplayerid: msg.getLocalplayerid(),
+    platformaccountid: msg.getPlatformaccountid(),
+    platformaccountname: msg.getPlatformaccountname(),
+    accesstoken: msg.getAccesstoken(),
     loginhistoriesList: jspb.Message.toObjectList(msg.getLoginhistoriesList(),
     proto.pb_message.PB_AccountLoginHistory.toObject, includeInstance),
     serverinfosList: jspb.Message.toObjectList(msg.getServerinfosList(),
@@ -1910,36 +1574,36 @@ proto.pb_message.SC11002.prototype.serializeBinary = function() {
  */
 proto.pb_message.SC11002.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = jspb.Message.getField(this, 1);
-  if (f != null) {
+  f = this.getSessionid();
+  if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = jspb.Message.getField(this, 2);
-  if (f != null) {
+  f = this.getLocalplayerid();
+  if (f !== 0) {
     writer.writeInt64(
       2,
       f
     );
   }
-  f = jspb.Message.getField(this, 3);
-  if (f != null) {
+  f = this.getPlatformaccountid();
+  if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = jspb.Message.getField(this, 4);
-  if (f != null) {
+  f = this.getPlatformaccountname();
+  if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = jspb.Message.getField(this, 5);
-  if (f != null) {
+  f = this.getAccesstoken();
+  if (f.length > 0) {
     writer.writeString(
       5,
       f
@@ -1978,27 +1642,13 @@ proto.pb_message.SC11002.prototype.cloneMessage = function() {
  * @return {string}
  */
 proto.pb_message.SC11002.prototype.getSessionid = function() {
-  return /** @type {string} */ (!this.hasSessionid() ? "" : jspb.Message.getField(this, 1));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.SC11002.prototype.setSessionid = function(value) {
   jspb.Message.setField(this, 1, value);
-};
-
-
-proto.pb_message.SC11002.prototype.clearSessionid = function() {
-  jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.SC11002.prototype.hasSessionid = function() {
-  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -2007,27 +1657,13 @@ proto.pb_message.SC11002.prototype.hasSessionid = function() {
  * @return {number}
  */
 proto.pb_message.SC11002.prototype.getLocalplayerid = function() {
-  return /** @type {number} */ (!this.hasLocalplayerid() ? 0 : jspb.Message.getField(this, 2));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 2, 0));
 };
 
 
-/** @param {number?|undefined} value  */
+/** @param {number} value  */
 proto.pb_message.SC11002.prototype.setLocalplayerid = function(value) {
   jspb.Message.setField(this, 2, value);
-};
-
-
-proto.pb_message.SC11002.prototype.clearLocalplayerid = function() {
-  jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.SC11002.prototype.hasLocalplayerid = function() {
-  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -2036,27 +1672,13 @@ proto.pb_message.SC11002.prototype.hasLocalplayerid = function() {
  * @return {string}
  */
 proto.pb_message.SC11002.prototype.getPlatformaccountid = function() {
-  return /** @type {string} */ (!this.hasPlatformaccountid() ? "" : jspb.Message.getField(this, 3));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.SC11002.prototype.setPlatformaccountid = function(value) {
   jspb.Message.setField(this, 3, value);
-};
-
-
-proto.pb_message.SC11002.prototype.clearPlatformaccountid = function() {
-  jspb.Message.setField(this, 3, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.SC11002.prototype.hasPlatformaccountid = function() {
-  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -2065,27 +1687,13 @@ proto.pb_message.SC11002.prototype.hasPlatformaccountid = function() {
  * @return {string}
  */
 proto.pb_message.SC11002.prototype.getPlatformaccountname = function() {
-  return /** @type {string} */ (!this.hasPlatformaccountname() ? "" : jspb.Message.getField(this, 4));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.SC11002.prototype.setPlatformaccountname = function(value) {
   jspb.Message.setField(this, 4, value);
-};
-
-
-proto.pb_message.SC11002.prototype.clearPlatformaccountname = function() {
-  jspb.Message.setField(this, 4, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.SC11002.prototype.hasPlatformaccountname = function() {
-  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -2094,27 +1702,13 @@ proto.pb_message.SC11002.prototype.hasPlatformaccountname = function() {
  * @return {string}
  */
 proto.pb_message.SC11002.prototype.getAccesstoken = function() {
-  return /** @type {string} */ (!this.hasAccesstoken() ? "" : jspb.Message.getField(this, 5));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
-/** @param {string?|undefined} value  */
+/** @param {string} value  */
 proto.pb_message.SC11002.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 5, value);
-};
-
-
-proto.pb_message.SC11002.prototype.clearAccesstoken = function() {
-  jspb.Message.setField(this, 5, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return{!boolean}
- */
-proto.pb_message.SC11002.prototype.hasAccesstoken = function() {
-  return jspb.Message.getField(this, 5) != null;
 };
 
 
