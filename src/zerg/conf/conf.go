@@ -1,42 +1,79 @@
 package conf
 
-type ServerUrl struct {
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"os"
+)
+
+type serverUrl struct {
 	Ip   string
 	Port string
 }
 
-func (s ServerUrl) GetServerUrl() string {
+type config struct {
+	StartTypeDes   string
+	StartType      int
+	StartIdxDes    string
+	StartIdx       int
+	LoginServerUrl []*serverUrl
+	GameServerUrls []*serverUrl
+	logDes         string
+	LogLevel       int
+	LogPath        string
+	LenStackBuf    int
+	MachineId      uint16
+}
+
+var Config config
+
+func (s *serverUrl) GetServerUrl() string {
 	var url string = s.Ip
 	url += ":"
 	url += s.Port
 	return url
 }
 
-func (s ServerUrl) GetServerSeparatorPort() string {
+func (s *serverUrl) GetServerSeparatorPort() string {
 	var url string = ":"
 	url += s.Port
 	return url
 }
 
-var (
-	LenStackBuf = 4096
+func GetCurrentGameServerUrl() string {
+	var s *serverUrl = Config.GameServerUrls[Config.StartIdx]
+	var url string = s.Ip
+	url += ":"
+	url += s.Port
+	return url
+}
 
-	// log
-	LogLevel string
-	LogPath  string
+func GetCurrentLoginServerSeparatorPort() string {
+	var s *serverUrl = Config.LoginServerUrl[Config.StartIdx]
+	var url string = ":"
+	url += s.Port
+	return url
+}
 
-	// console
-	ConsolePort   int
-	ConsolePrompt string = "Leaf# "
-	ProfilePath   string
+func ReadConfig() {
+	fi, err := os.Open("res/config.json")
+	if err != nil {
+		panic(err)
+	}
+	defer fi.Close()
+	fd, err := ioutil.ReadAll(fi)
+	if err != nil {
+		panic(err)
+	}
 
-	PendingWriteNum int
-	MACHINE_ID      uint16 = 1
+	fmt.Println(string(fd))
 
-	LoginServerUrls []ServerUrl = []ServerUrl{ServerUrl{"127.0.0.1", "10086"}}
-	DataServerUrls  []ServerUrl = []ServerUrl{ServerUrl{"127.0.0.1", "10186"}}
-	StateServerUrls []ServerUrl = []ServerUrl{ServerUrl{"127.0.0.1", "10286"}}
-	GameServerUrls  []ServerUrl = []ServerUrl{ServerUrl{"127.0.0.1", "10386"}}
-	RankServerUrls  []ServerUrl = []ServerUrl{ServerUrl{"127.0.0.1", "10486"}}
-	MailServerUrls  []ServerUrl = []ServerUrl{ServerUrl{"127.0.0.1", "10586"}}
-)
+	err = json.Unmarshal(fd, &Config)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(Config)
+
+}

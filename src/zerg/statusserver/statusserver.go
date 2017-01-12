@@ -1,5 +1,0 @@
-package statusserver
-
-func StartServer() {
-
-}

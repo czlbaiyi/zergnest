@@ -10,7 +10,7 @@ import (
 var msgMap = make(map[int32]*Router)
 
 func DoMessageBuffs(buffs []byte) ([]byte, error) {
-	msg := &pb_message.PB_CommonMsg{}
+	msg := &basemsg.PB_CommonMsg{}
 	err := proto.Unmarshal(buffs, msg)
 	if err != nil {
 		return nil, zerror.New("protobuf,", err.Error())
@@ -22,7 +22,7 @@ func DoMessageBuffs(buffs []byte) ([]byte, error) {
 
 	retBuffs, err := (*msgMap[msg.OpCode]).OnPacketHandler(msg.MsgBuf)
 	if err != nil {
-		errBuf, err := RetErrorMsg(pb_message.SC10000_PB_MsgDealError, msg.OpCode, err.Error())
+		errBuf, err := RetErrorMsg(basemsg.SC10000_PB_MsgDealError, msg.OpCode, err.Error())
 		if err != nil {
 			return nil, zerror.New("protobuf,", err.Error())
 		} else {
@@ -38,8 +38,8 @@ func RegisterMessageRouter(r *Router) {
 	msgMap[redId] = r
 }
 
-func RetErrorMsg(errorCode pb_message.SC10000ErrorCodeType, errOpcode int32, errMsg string) ([]byte, error) {
-	router := &pb_message.SC10000{}
+func RetErrorMsg(errorCode basemsg.SC10000ErrorCodeType, errOpcode int32, errMsg string) ([]byte, error) {
+	router := &basemsg.SC10000{}
 	router.ErrorCode = errorCode
 	router.CsOpcode = errOpcode
 	router.ErrorMsg = errMsg
@@ -48,7 +48,7 @@ func RetErrorMsg(errorCode pb_message.SC10000ErrorCodeType, errOpcode int32, err
 		return nil, zerror.New("protobuf,", err.Error())
 	}
 
-	msg := &pb_message.PB_CommonMsg{}
+	msg := &basemsg.PB_CommonMsg{}
 	msg.MsgId = 0
 	msg.OpCode = errOpcode
 	msg.MsgBuf = routerBytes
@@ -61,7 +61,7 @@ func RetErrorMsg(errorCode pb_message.SC10000ErrorCodeType, errOpcode int32, err
 }
 
 func GetMsgPacket(msgId int32, opCode int32, msgBuf []byte) ([]byte, error) {
-	msgPacket := &pb_message.PB_CommonMsg{
+	msgPacket := &basemsg.PB_CommonMsg{
 		msgId,
 		opCode,
 		msgBuf,

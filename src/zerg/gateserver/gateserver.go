@@ -1,5 +1,0 @@
-package gateserver
-
-func StartServer() {
-
-}

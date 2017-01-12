@@ -1,5 +1,0 @@
-package rankserver
-
-func StartServer() {
-
-}

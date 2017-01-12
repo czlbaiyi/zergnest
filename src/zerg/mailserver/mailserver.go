@@ -1,5 +1,0 @@
-package mailserver
-
-func StartServer() {
-
-}

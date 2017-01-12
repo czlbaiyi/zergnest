@@ -1,0 +1,29 @@
+{
+    "StartTypeDes":"0:LOGINSERVER,1:GAMESERVER",
+    "StartType":0,
+    "StartIdxDes":"start the idx in serverList",
+    "StartIdx":0,
+    "LoginServerUrl":
+    [
+        {
+            "Ip": "127.0.0.1",
+            "Port": "10086"
+        }
+    ],
+    "GameServerUrls":
+    [
+        {
+            "Ip": "127.0.0.1",
+            "Port": "10186"
+        },
+        {
+            "Ip": "127.0.0.1",
+            "Port": "10286"
+        }
+    ],
+    "logDes":"0:DEBUG,1:RELEASE,2:ERROR,3:FATAL",
+    "logLevel":0,
+    "logPath":"",
+    "LenStackBuf":4096,
+    "MachineId":1
+}

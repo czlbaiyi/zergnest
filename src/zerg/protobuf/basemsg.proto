@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package basemsg;
+
+////////////////////////////////////////////////通用协议///////////////////////////////////
+//通用消息包
+message PB_CommonMsg
+{
+	int32 msgId = 1;	//Id标识
+	int32 opCode = 2; 	//操作标识
+	bytes msgBuf = 3;	//消息类型
+}
+
+
+//通用错误返回
+message SC10000
+{
+	enum PacketType
+	{
+		PB_Temp = 0;
+		PB_PackRetType = 10000;
+	}
+	
+	enum errorCodeType{
+		PB_BuffPraseError = 0;  //消息体 解析失败
+		PB_MsgPraseError = 1;	//protobuf 解析失败
+		PB_MsgDealError = 2;	//消息处理失败 
+	}
+	string errorMsg = 1;//错误信息  
+	int32 csOpcode = 2;//处理客户端哪条协议出的错
+    errorCodeType errorCode = 3;//错误代码（1 - 100 公共错误处理代码 1、在当前页，弹errorMsg提示框 2、平台验证失败）
+} 

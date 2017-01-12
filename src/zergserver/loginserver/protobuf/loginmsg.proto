@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package loginmsg;
+
+////////////////////////////////////////////////登陆协议///////////////////////////////////
+/************************************************************************
+Modul
+************************************************************************/
+
+message PB_ServerInfo
+{
+	enum PB_ServerStatus
+	{
+		good = 0;//畅通
+		crowd = 1;//拥挤
+		busy = 2;//爆满
+		maintain = 3;//维护中
+	}
+	int32 serverId = 1;			//服务器唯一标示
+	string serverName = 2;		//服务器名称
+	string serverUrl = 3;		//地址
+	PB_ServerStatus status = 4;	//状态
+}
+
+message PB_AccountLoginHistory
+{
+    enum PB_LoginRoleTye
+	{
+		man = 0;//男
+		women = 1;//女
+	}
+	int32 serverId = 1;//服务器唯一标示
+	PB_LoginRoleTye roleType = 2;//角色类型
+	string roleName = 3;//
+	int32 roleLevel = 4;//
+	int32 awakeLevel = 5;//
+	int32 vipLevel = 6;//
+	int64 updateTime = 7;//
+}
+
+//玩家登陆 CS11001（第三方登陆或本地测试登陆都使用该协议）
+message CS11001
+{
+	enum PacketType
+	{
+		PB_Temp = 0;
+		PB_PackType = 11001;
+		PB_PackRetType = 11002;
+	}
+
+	enum PB_PlatformType
+	{
+		local_test = 0;														//本地uuid登录 mac地址等
+		local_login = 1;													//本地账号密码
+	}					
+					
+	PB_PlatformType platformType = 1;										//平台类型（登陆方式）
+					
+	//账号信息					
+	string account = 2;														//平台账号ID(或本地账号)
+	string password = 3;													//平台验证串(或本地密码)
+					
+	//客户端硬件信息					
+	string clientType = 4;													//客户端类型：“IOS”，“ANDROID”或者“OTHER”
+	string uuid = 5;														//客户端唯一标示(IOS为UUID，ANDROID为IMEI，PC为MAC地址)
+}					
+					
+//登陆返回 SC11002					
+message SC11002 					
+{					
+	enum PacketType					
+	{					
+		PB_Temp = 0;					
+		PB_PackType = 11002;					
+	}					
+	string sessionId = 1;		 											//本地应用生成的账号会话id
+	int64 playerId = 2;				 										//本地应用的账号id
+	repeated PB_AccountLoginHistory loginHistories = 3; 					//角色信息
+    repeated PB_ServerInfo serverInfos = 4;									//服务器列表
+}					

@@ -1,5 +1,0 @@
-package dataserver
-
-func StartServer() {
-
-}

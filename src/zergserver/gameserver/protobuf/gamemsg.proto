@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package gamemsg;
+
+////////////////////////////////////////////////游戏服协议///////////////////////////////////
+/************************************************************************
+Modul
+************************************************************************/
+
+message PB_PlayerProperty
+{
+	enum PB_RolePropertyType
+	{
+		level = 0;													//等级
+		exp = 1;													//经验
+		max_exp = 2;												//最大经验值
+		gold = 3;													//金币
+		diamonds = 4;												//钻石
+	}
+	PB_RolePropertyType type = 1;							//属性类型
+	int64 value = 2;										//对应的当前数值
+
+}							
+
+message PB_Player
+{
+	enum PB_RoleType
+	{
+		PB_RoleType_Nan = 0; //男
+		PB_RoleType_Nv = 1;  //女
+	}
+	string name = 1;												//昵称
+	PB_RoleType roleType =  2;										//类型
+	PB_PlayerProperty playerProp = 3;								//属性
+
+}							
+
+//玩家登陆 CS21001（第三方登陆或本地测试登陆都使用该协议）							
+message CS21001							
+{		
+	enum PacketType
+	{
+		PB_Temp = 0;
+		PB_PackType = 21001;
+		PB_PackRetType = 21002;
+	}					
+	int64 accountId = 1;											//本地应用的账号id
+	string sessionId = 2;											//本地应用生成的账号会话id
+	int32 serverId = 3;												//选服列表中serverId
+}					
+					
+//登陆返回 SC12002					
+message SC21002 					
+{								
+	enum PacketType					
+	{					
+		PB_Temp = 0;					
+		PB_PackType = 21002;					
+	}		
+	PB_Player player = 1;
+}					
